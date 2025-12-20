@@ -9,6 +9,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const gameRoutes = require('./routes/gameRoutes');
 const userRoutes = require('./routes/userRoutes'); 
+const aiRoutes = require('./routes/aiRoutes');
 
 // Import the Socket Manager function we created in step 2
 const socketManager = require('./socket/socketManager');
@@ -48,6 +49,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/game', gameRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Initialize Socket Logic
 socketManager(io);
