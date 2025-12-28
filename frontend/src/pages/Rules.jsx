@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { Swords, Clock, Trophy, Zap, Target, Crown, ChevronDown } from 'lucide-react';
+import { Swords, Clock, Zap, Target, Crown, ChevronDown, AlertTriangle, BrainCircuit } from 'lucide-react';
 
 const Rules = () => {
   const mountRef = useRef(null);
@@ -119,19 +119,18 @@ const Rules = () => {
   }, []);
 
   const rules = [
-    { icon: Target, title: "Same Problem", desc: "Both players receive identical coding challenges", color: "from-blue-500 to-cyan-500" },
-    { icon: Clock, title: "30 Minutes", desc: "Race against time to solve the problem", color: "from-purple-500 to-pink-500" },
-    { icon: Zap, title: "First to Solve", desc: "First submission with 100% accuracy wins", color: "from-orange-500 to-red-500" },
-    { icon: Trophy, title: "Hidden Tests", desc: "Secret test cases determine the real winner", color: "from-green-500 to-emerald-500" }
+    { icon: Target, title: "Same Problem", desc: "Both players receive identical coding challenges.", color: "from-blue-500 to-cyan-500" },
+    { icon: Clock, title: "30 Minutes", desc: "Race against time. Solve it before the clock runs out.", color: "from-purple-500 to-pink-500" },
+    { icon: AlertTriangle, title: "Anti-Cheat", desc: "Tab switching is forbidden. 3 strikes and you are disqualified.", color: "from-orange-500 to-red-500" },
+    { icon: BrainCircuit, title: "AI Coach", desc: "Get instant AI analysis on your code complexity after the match.", color: "from-emerald-500 to-green-500" }
   ];
 
   const ranks = [
-    { name: "Bronze", range: "0-1000", color: "bg-amber-700" },
-    { name: "Silver", range: "1000-1500", color: "bg-gray-400" },
-    { name: "Gold", range: "1500-2000", color: "bg-yellow-400" },
-    { name: "Platinum", range: "2000-2500", color: "bg-cyan-400" },
-    { name: "Diamond", range: "2500-3000", color: "bg-blue-400" },
-    { name: "Grandmaster", range: "3000+", color: "bg-purple-500" }
+    { name: "Novice", range: "0-2 Wins", color: "bg-gray-600" },
+    { name: "Apprentice", range: "3-9 Wins", color: "bg-blue-500" },
+    { name: "Coder", range: "10-24 Wins", color: "bg-orange-500" },
+    { name: "Hacker", range: "25-49 Wins", color: "bg-red-600" },
+    { name: "Grandmaster", range: "50+ Wins", color: "bg-purple-600" }
   ];
 
   return (
@@ -155,7 +154,7 @@ const Rules = () => {
             </h1>
             <p className="text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed animate-in slide-in-from-bottom duration-1000 delay-200">
               Traditional coding is <span className="text-gray-400">solitary</span>. 
-              CLash of Coders changes this. Think fast, optimize under pressure, and compete in real-time.
+              Clash of Coders changes this. Think fast, optimize under pressure, and compete in real-time with <span className="text-purple-400 font-bold">AI Feedback</span>.
             </p>
             <div className="flex gap-4 justify-center pt-8 animate-in slide-in-from-bottom duration-1000 delay-300">
               <div className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-bold">
@@ -205,23 +204,21 @@ const Rules = () => {
               <Clock className="w-7 h-7" /> Timeout Scenario
             </h3>
             <p className="text-gray-300 text-lg">
-              If time runs out, the player with the most passed test cases wins. 
-              Partial solutions count—every test case matters!
+              If the 30-minute timer runs out and no correct solution is submitted, the <strong>Room Host</strong> is declared the winner by default. Speed matters!
             </p>
           </div>
         </div>
 
-        {/* Elo System */}
+        {/* Ranking System */}
         <div className="py-20 px-8 bg-gradient-to-b from-transparent via-purple-950/20 to-transparent">
           <h2 className="text-5xl font-black text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
-            🚀 ELO RATING SYSTEM
+            🚀 RANKING SYSTEM
           </h2>
           <p className="text-center text-gray-400 text-xl mb-12 max-w-3xl mx-auto">
-            Just like Chess, gain rating points for wins, lose them for defeats. 
-            Beat higher-ranked players for bigger rewards. Climb the ranks!
+            Prove your worth by winning battles. Your rank evolves based on your total number of victories. Can you reach Grandmaster?
           </p>
           
-          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
             {ranks.map((rank, i) => (
               <div 
                 key={i}
@@ -231,12 +228,12 @@ const Rules = () => {
                   animation: 'fadeIn 0.5s ease-out forwards'
                 }}
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className={`w-4 h-4 rounded-full ${rank.color} group-hover:scale-150 transition-transform duration-300`} />
-                  <Crown className={`w-5 h-5 text-gray-600 group-hover:text-${rank.color.split('-')[1]}-400 transition-colors`} />
+                <div className="flex flex-col items-center gap-3 mb-2">
+                  <div className={`w-8 h-8 rounded-full ${rank.color} group-hover:scale-125 transition-transform duration-300 shadow-lg`} />
+                  <Crown className={`w-6 h-6 text-gray-400 group-hover:text-yellow-400 transition-colors`} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-1">{rank.name}</h3>
-                <p className="text-sm text-gray-500 font-mono">{rank.range} Elo</p>
+                <h3 className="text-lg font-bold text-white mb-1 text-center">{rank.name}</h3>
+                <p className="text-xs text-gray-400 font-mono text-center bg-slate-800 px-2 py-1 rounded">{rank.range}</p>
               </div>
             ))}
           </div>
@@ -249,7 +246,7 @@ const Rules = () => {
               READY TO BATTLE?
             </h2>
             <p className="text-xl text-gray-400">
-              Join thousands of developers competing in real-time coding battles.
+              Join the arena, defeat your opponents, and become a coding legend.
             </p>
             <button className="px-12 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-xl font-bold rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50">
               START BATTLING NOW
