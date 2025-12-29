@@ -24,7 +24,7 @@ const getUserProfile = async (req, res) => {
 
 // @desc    Update User Profile
 // @route   PUT /api/users/update
-const updateUserProfile = async (req, res) => {
+ const updateUserProfile = async   (req, res) => {
   const { userId, username, age, college, address, bio } = req.body;
 
   try {
