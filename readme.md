@@ -1,6 +1,6 @@
-# ⚔️ AlgoBattle - Real-Time 1v1 Coding Competition Platform
+# ⚔️ Clash of Coders - Real-Time 1v1 Coding Competition Platform
 
-AlgoBattle is a competitive coding platform where developers compete against each other in real-time. It simulates the high-pressure environment of technical interviews with live 1v1 coding battles, integrated compilation, and AI-powered performance analysis.
+Clash of Coders is a competitive coding platform where developers compete against each other in real-time. It simulates the high-pressure environment of technical interviews with live 1v1 coding battles, integrated compilation, and AI-powered performance analysis.
 
 ## 🚀 Key Features
 
