@@ -10,7 +10,7 @@ const PROBLEM_IDS = [
 ];
 
 const getAizuProblem = async () => {
-    try {
+    try { 
         const randomId = PROBLEM_IDS[Math.floor(Math.random() * PROBLEM_IDS.length)];
         const apiUrl = `https://judgeapi.u-aizu.ac.jp/resources/descriptions/en/${randomId}`;
         
@@ -106,6 +106,8 @@ const getAizuProblem = async () => {
             console.warn(`[AIZU] Warning: No test cases extracted for ${randomId}.`);
         }
 
+         let cleanHtml = $.html().replace(/\$/g, '');
+
         const starterCode = {
             javascript: `// Solve ${displayTitle}\nconst fs = require('fs');\nconst input = fs.readFileSync('/dev/stdin').toString().trim().split('\\n');\n// Write code here\n`,
             python: `# Solve ${displayTitle}\nimport sys\nlines = sys.stdin.readlines()\n# Write code here\n`,
@@ -116,7 +118,7 @@ const getAizuProblem = async () => {
         return {
             problemId: randomId,
             title: displayTitle, 
-            description: $.html(), // Return modified HTML (without H1)
+            description: cleanHtml, // Return modified HTML (without H1)
             descriptionUrl: `https://onlinejudge.u-aizu.ac.jp/problems/${randomId}`,
             testCases: testCases,
             starterCode: starterCode
