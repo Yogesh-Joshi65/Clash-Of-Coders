@@ -175,4 +175,4 @@ Contributions are always welcome!
 
 ## Author
 
-Built with ❤️ by **Hrishikesh Bankapur**
+Built with ❤️ by **Hrishikesh Bankapur** and **Yogesh Joshi**
